@@ -2,7 +2,7 @@
 
 **Sentinel** is a high-performance, asynchronous guardrail service designed for high-frequency IoT platforms. It sits between raw telemetry streams and downstream ML models to ensure that data "drift" or "noise" never breaks your production environment.
 
----
+
 
 ###  Key Features
 * **Asynchronous Ingestion:** Built on **FastAPI** to handle concurrent high-volume streaming data.
@@ -12,7 +12,7 @@
     * **Self-Healing (Imputation):** Automatic data recovery using historical mean regression when noise is detected.
 * **Confidence Scoring:** Every batch returns a confidence grade. Scores below **0.7** are automatically routed to a background **Review Queue**.
 
----
+
 
 ### 📂 Repository Structure
 ```text
@@ -26,7 +26,6 @@
 └── README.md            # Documentation
 ```
 
----
 
 ### 🛠️ Setup & Installation
 
@@ -53,7 +52,6 @@ This is the fastest way to get the service running in a production-like environm
     python main.py
     ```
 
----
 
 ###  Testing the Pipeline
 Once the Swagger UI is running at `/docs`:
@@ -65,8 +63,6 @@ Once the Swagger UI is running at `/docs`:
     * **Input:** Send an outlier (e.g., `500.0`).
     * **Result:** `status: flagged_for_review`, `confidence_score: 0.4`.
     * **Healing:** The `data.value` in the response is automatically corrected to `20.12`.
-
----
 
 ###  Design Decisions
 * **FastAPI & Async:** IoT ingestion requires non-blocking I/O. Using `async/await` ensures the service remains responsive during heavy bursts of sensor data.
